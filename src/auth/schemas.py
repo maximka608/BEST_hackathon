@@ -42,14 +42,6 @@ class AdminResponse(BaseModel):
     username: str
     email: EmailStr
     is_admin: UserStatus
-    is_active: bool
-    created_at: datetime
-    updated_at: datetime
-    start_balance: float
-    current_balance: float
-    profit_sharing: float
-    is_approved_by_admin: bool
-    is_verified_by_email: bool
     access_token: Optional[str]
     refresh_token: Optional[str]
 
