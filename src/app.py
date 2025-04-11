@@ -4,6 +4,7 @@ import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
+from src.auth.routers.auth_router import auth_router
 from src.config import origins
 from src.database import get_db
 
@@ -29,6 +30,8 @@ async def add_process_time_header(request: Request, call_next):
 @app.get("/")
 async def health_check():
     return {"status": "OK"}
+
+app.include_router(auth_router, prefix="/api/auth", tags=["Auth"])
 
 if __name__ == '__main__':
     get_db()
