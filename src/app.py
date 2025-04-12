@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.auth.routers.admin_router import admin_router
 from src.auth.routers.auth_router import auth_router
 from src.auth.routers.user_router import user_router
+from src.object.object_router import obj_router
 from src.config import origins
 from src.database import get_db
 
@@ -37,6 +38,9 @@ app.include_router(auth_router, prefix="/api/auth", tags=["Auth"])
 
 app.include_router(user_router, prefix="/api/user", tags=["User"])
 app.include_router(admin_router, prefix="/api/admin", tags=["Admin"])
+
+app.include_router(obj_router, prefix="/api/object")
+
 
 if __name__ == '__main__':
     get_db()
