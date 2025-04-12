@@ -1,4 +1,5 @@
 import time
+from contextlib import asynccontextmanager
 
 import uvicorn
 from fastapi import FastAPI, Request
@@ -10,10 +11,18 @@ from src.auth.routers.user_router import user_router
 from src.object.object_router import obj_router
 from src.config import origins
 from src.database import get_db
+from src.db.mongo import close_mongo_connection, connect_to_mongo
 from src.objects.routers.admin_objects_router import admin_objects_router
 from src.objects.routers.objects_router import object_router
 
-app = FastAPI()
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await connect_to_mongo()
+    yield
+    await close_mongo_connection()
+
+app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -35,6 +44,7 @@ async def add_process_time_header(request: Request, call_next):
 @app.get("/")
 async def health_check():
     return {"status": "OK"}
+
 
 app.include_router(auth_router, prefix="/api/auth", tags=["Auth"])
 
