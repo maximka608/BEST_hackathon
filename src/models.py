@@ -30,7 +30,7 @@ class Users(Base):
 
 
 class Objects(Base):
-    __tablename__ = "objects"
+    __tablename__ = "object"
 
     id = Column(Integer, primary_key=True, index=True)
     address = Column(String, nullable=False)
@@ -55,7 +55,7 @@ class Comments(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    object_id = Column(Integer, ForeignKey("objects.id"), nullable=False)
+    object_id = Column(Integer, ForeignKey("object.id"), nullable=False)
     text = Column(String, nullable=False)
     rating = Column(Float, nullable=False)
 
