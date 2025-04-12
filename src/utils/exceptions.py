@@ -38,3 +38,7 @@ user_not_found_exception = HTTPException(
     status_code=status.HTTP_404_NOT_FOUND, detail="User not found"
 )
 
+object_not_found_exception = HTTPException(
+    status_code=status.HTTP_404_NOT_FOUND, detail="Object not found"
+)
+

@@ -29,6 +29,6 @@ to apply migrations run:
 alembic upgrade head
 ```
 
-run script_add_test_data.py to add test data:
+run script_add_test_data.py to add test data
 
 
