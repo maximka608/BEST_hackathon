@@ -9,6 +9,5 @@ def init_db():
     Base.metadata.create_all(bind=engine)
     print("INIT DB")
 
-
 if __name__ == "__main__":
     init_db()

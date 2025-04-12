@@ -10,7 +10,7 @@ alembic init alembic
 
 in alembic/env.py set your target_metadata as follows:
 ```python
-from src.database import Base
+from src.models import Base
 target_metadata = Base.metadata
 ```
 
@@ -28,3 +28,7 @@ to apply migrations run:
 ```python
 alembic upgrade head
 ```
+
+run script_add_test_data.py to add test data:
+
+

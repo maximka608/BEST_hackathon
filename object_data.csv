@@ -1,0 +1,55 @@
+address,category,latitude,longitude,ramp,lowered_curb,tactile_marking,accessible_restroom,entrance,level_sidewalk,elevator,hoist,accessible_parking
+"Сквер на проспекті Голосіївському, 5-15",PARK,50.4029669877851,30.519061422545438,True,False,True,True,True,False,False,False,True
+Парк Рильського,PARK,50.38987694327977,30.50053835583728,True,True,False,False,True,True,False,False,True
+PAUL CAFE,PARK,50.442340630066724,30.516207636305573,True,True,True,False,True,True,False,False,False
+Bassano Ristorante,CAFE,50.43016956998166,30.514546005438476,True,True,False,True,True,True,False,False,False
+Ханей,CAFE,50.454684884814476,30.50873029740364,False,True,False,False,True,True,False,False,False
+Marinara Kiev,CAFE,50.45796179301097,30.485502196350993,True,False,False,True,True,False,False,False,False
+Домашній ресторан Filetto,CAFE,50.420569152547245,30.46343779155597,True,True,False,True,True,True,False,False,True
+Косатка,CAFE,50.45997186121297,30.5115574431085,False,False,True,False,True,False,False,False,False
+МакДональдз,CAFE,50.40495127845884,30.65412312029049,True,True,True,True,True,True,False,False,True
+Ресторан СЕВАН,CAFE,50.449612202546376,30.40995151103369,True,False,False,True,True,True,False,False,False
+Ресторан Portfolio,CAFE,50.452282222006794,30.418338058890225,True,True,True,True,True,True,True,False,True
+Multiplex ЦУМ,CINEMA,50.44885118943931,30.520827128268767,True,True,False,True,True,True,True,False,False
+Кінотеатр Жовтень,CINEMA,50.47201886734643,30.509497477994035,True,True,False,True,True,False,True,False,False
+Сінема Сіті Київ,CINEMA,50.41517226560908,30.52220041921116,True,True,True,True,True,True,True,False,True
+Баттерфляй DeLuxe,CINEMA,50.43726309468958,30.512587382614413,True,False,False,True,True,True,True,False,False
+Планета Кіно,CINEMA,50.49102536951783,30.516363932705993,True,True,True,True,True,True,True,True,True
+"Сквер на проспекті Голосіївському, 5-15",PARK,50.4029669877851,30.519061422545438,True,False,True,True,True,False,False,False,True
+Парк Рильського,PARK,50.38987694327977,30.50053835583728,True,True,False,False,True,True,False,False,True
+"Сквер на вул. Героїв Маріуполя, 2-Г",PARK,50.37867586338308,30.45827582516773,True,True,False,False,True,True,False,False,False
+"Сквер на вул. Лятошинського, 26-Б",PARK,50.38097288318729,30.448705182040538,True,True,False,False,True,False,False,False,False
+"Сквер на вул. Лятошинського, 24, 26-А, 28",PARK,50.38077751333412,30.44613993470245,True,False,False,False,True,True,False,False,False
+"Сквер на просп. Голосіївський, 114, корпус 2",PARK,50.386655265595664,30.488491135337856,False,False,False,False,True,False,False,False,False
+"Сквер на просп. Голосіївський, 108",PARK,50.388140332780594,30.49457125628376,False,True,False,False,True,True,False,False,False
+Сквер на розі вулиці та провулку Деміївська,PARK,50.403116093839145,30.512506003493588,True,False,True,False,True,False,False,False,True
+"Сквер на просп. Науки 4-А, 4-Б",PARK,50.40580376165428,30.521026806497225,True,True,True,False,True,False,False,False,False
+Сквер на розі вул. Голосіївська та просп. Науки,PARK,50.40361304103756,30.52455283541284,False,True,False,True,True,True,False,False,True
+"Сквер на вул. Писаржевського та вул. Іртишська, 8-А",PARK,50.39648604033374,30.53387721609702,False,False,False,False,True,False,False,False,False
+"Сквер на вул. Тарасівська, 23/25",PARK,50.435561440753816,30.506509541437115,True,True,False,True,True,True,False,False,True
+Сквер на вул. Паньківська,PARK,50.44036822541978,30.50490618497544,False,True,True,False,True,False,False,False,False
+Парк «Юність»,PARK,50.44112701942676,30.46581669580851,True,True,False,True,True,True,False,False,True
+Парк «Потапова»,PARK,50.42465937665239,30.38742751496446,False,False,False,False,True,False,False,False,False
+Парк «Совки»,PARK,50.43904493336451,30.37471504004999,True,True,False,True,True,True,False,False,True
+Парк «Інтернаціональний»,PARK,50.43068513860139,30.38109148642364,False,True,False,False,True,False,False,False,False
+"Сквер вул. Чорнобильська, 12",PARK,50.45899550318437,30.34762355987571,False,False,False,False,True,True,False,False,False
+"Сквер вул. Чорнобильська, 3",PARK,50.45600277315481,30.34473805148998,True,False,False,False,True,False,False,False,False
+Сквер біля школи №304 вул. Прилужна,PARK,50.460570358002286,30.341778527208703,True,True,False,False,True,True,False,False,False
+"Парк ""Відрадний""",PARK,50.43322017600319,30.42653082147552,True,True,True,True,True,True,False,False,True
+Парк «Орлятко»,PARK,50.44421415996824,30.4277730065183,True,False,True,False,True,False,False,False,True
+Парк ім. М. Зерова,PARK,50.430371321391526,30.46944522176908,True,True,True,True,True,True,False,False,True
+Сквер ім. Б. Немцова,PARK,50.43532268744509,30.47316035094631,True,True,False,False,True,True,False,False,False
+Сквер біля кінотеатру «Супутник»,PARK,50.43839375107784,30.45836442789603,False,False,True,False,True,True,False,False,False
+Сквер на розі вул. М. Донця та проспекту Відрадного,PARK,50.433965467900826,30.43295019335565,False,False,True,False,True,False,False,False,False
+Сквер по вул. В. Гетьмана,PARK,50.45186191748821,30.44563877040326,True,True,False,False,True,True,False,False,True
+"Сквер по вул. Машинобудівній, 25-А",PARK,50.4471300322941,30.43686157418796,True,False,True,False,True,True,False,False,False
+Парк ім. Т.Г. Шевченка,PARK,50.44176112342,30.51295167271248,True,True,False,True,True,True,False,False,True
+Сквер на розі вул. О. Гончара та вул. М. Коцюбинського,PARK,50.44954492711168,30.50262272514489,True,True,False,False,True,True,False,False,False
+Сквер ім. О. Гончара,PARK,50.44908803205016,30.50431983554765,False,False,False,False,True,True,False,False,False
+"Сквер на вул. Січових Стрільців, 80-84",PARK,50.458028959578186,30.486572545603916,True,False,False,False,True,True,False,False,False
+"Сквер на вул. Січових Стрільців, 89-А",PARK,50.45801633367071,30.485509765421742,False,False,False,False,True,False,False,False,False
+Парк «Веселка»,PARK,50.47309015045639,30.39757133502755,True,True,False,True,True,True,False,False,True
+Парк Сирецький,PARK,50.46764638136218,30.438645463854908,True,True,False,True,True,True,False,False,True
+Народницький парк,PARK,50.42912074211961,30.56887072119025,True,False,False,False,True,True,False,False,False
+Парк-памятка садово-паркового мистецтва «Хрещатий»,PARK,50.453306301637866,30.531668915607117,False,False,False,False,True,False,False,False,False
+Бульвар Лесі Українки,PARK,50.42963482700551,30.53644090517325,True,True,True,False,True,True,False,False,False

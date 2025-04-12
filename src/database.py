@@ -1,6 +1,5 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base, Session
-
 from src.config import DATABASE_URL
 
 engine = create_engine(
