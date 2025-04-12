@@ -9,6 +9,8 @@ from src.auth.routers.auth_router import auth_router
 from src.auth.routers.user_router import user_router
 from src.config import origins
 from src.database import get_db
+from src.objects.routers.admin_objects_router import admin_objects_router
+from src.objects.routers.objects_router import object_router
 
 app = FastAPI()
 
@@ -37,6 +39,9 @@ app.include_router(auth_router, prefix="/api/auth", tags=["Auth"])
 
 app.include_router(user_router, prefix="/api/user", tags=["User"])
 app.include_router(admin_router, prefix="/api/admin", tags=["Admin"])
+app.include_router(object_router, prefix="/api/objects", tags=["Objects"])
+
+app.include_router(admin_objects_router, prefix="/api/admin/objects", tags=["Admin/Objects"])
 
 if __name__ == '__main__':
     get_db()
