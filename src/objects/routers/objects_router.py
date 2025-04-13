@@ -15,7 +15,7 @@ def get_objects_list(db: Session = Depends(get_db)):
     return objects
 
 
-@object_router.get("/")
+@object_router.get("/nodes")
 def get_all_the_mongols(db: Session = Depends(get_mongo_db)):
     nodes = get_all_from_mongols(db)
 
