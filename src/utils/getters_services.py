@@ -55,6 +55,11 @@ def get_all_from_mongols(db: Session):
     return nodes
 
 
+def get_mongodb_data(db: Session):
+    osm_data = list(db["osm_collection"].find())
+    return osm_data
+
+
 def get_comments_by_object_id(object_id: str, db: Session):
     return (db.execute(select(Comments).where(Comments.object_id == object_id, Comments.text != None))).scalars().all()
 

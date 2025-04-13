@@ -18,6 +18,7 @@ def add_comment(comment: CommentCreate, user: Users = Depends(get_current_user),
 
     if not comment.text and not comment.rating:
         raise comments_must_provide_text_or_rating_exception
+
     new_comment = create_comment(user, comment, sqlite_db)
     return new_comment
 

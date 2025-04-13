@@ -35,7 +35,6 @@ def create_comment(user: Users, comment: CommentCreate, db: Session):
         rating=comment.rating,
     )
 
-
     db.add(new_comment)
     db.flush()
     db.commit()

@@ -5,11 +5,10 @@ import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
-from src.comments.routers.comments_router import comments_router
 from src.auth.routers.admin_router import admin_router
 from src.auth.routers.auth_router import auth_router
 from src.auth.routers.user_router import user_router
-# from src.object.object_router import obj_router
+from src.comments.routers.comments_router import comments_router
 from src.config import origins
 from src.database import get_db
 from src.db.mongo import close_mongo_connection, connect_to_mongo
@@ -48,14 +47,12 @@ async def health_check():
 
 
 app.include_router(auth_router, prefix="/api/auth", tags=["Auth"])
-
 app.include_router(user_router, prefix="/api/user", tags=["User"])
 app.include_router(admin_router, prefix="/api/admin", tags=["Admin"])
 app.include_router(object_router, prefix="/api/objects", tags=["Objects"])
 
 app.include_router(admin_objects_router, prefix="/api/admin/objects", tags=["Admin/Objects"])
 app.include_router(comments_router, prefix="/api/comments", tags=["Comments"])
-# app.include_router(obj_router, prefix="/api/object")
 
 
 if __name__ == '__main__':
