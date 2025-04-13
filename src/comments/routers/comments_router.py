@@ -28,7 +28,7 @@ def get_comments(object_id: str,
 
     comments = get_comments_by_object_id(object_id=object_id, db=sqlite_db)
     if not comments:
-        return {"message": "No comments found"}
+        return []
 
     return [CommentResponse.model_validate(comment) for comment in comments]
 
