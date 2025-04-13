@@ -26,7 +26,7 @@ def create_rating(rating: RatingResponse, user: Users = Depends(get_current_admi
 def get_rating_by_object_id(object_id: str, db: Session = Depends(get_db)):
     rating = db.query(Ratings).filter(Ratings.object_id == object_id).first()
     if not rating:
-        user_not_found_exception
+        raise user_not_found_exception
 
 
     return RatingResponse.model_validate(rating, from_attributes=True)
@@ -35,7 +35,7 @@ def get_rating_by_object_id(object_id: str, db: Session = Depends(get_db)):
 def update_rating(object_id: str, rating: float, user: Users = Depends(get_current_admin), db: Session = Depends(get_db)):
     existing_rating = db.query(Ratings).filter(Ratings.object_id == object_id).first()
     if not existing_rating:
-        user_not_found_exception
+        raise user_not_found_exception
 
     existing_rating.rating = rating
     db.commit()
@@ -47,7 +47,7 @@ def update_rating(object_id: str, rating: float, user: Users = Depends(get_curre
 def increase_rating(object_id: str, user: Users = Depends(get_current_admin), db: Session = Depends(get_db)):
     existing_rating = db.query(Ratings).filter(Ratings.object_id == object_id).first()
     if not existing_rating:
-        user_not_found_exception
+        raise user_not_found_exception
 
     if existing_rating.rating >= 5:
         raise user_is_max_rank_exception
@@ -65,7 +65,7 @@ def increase_rating(object_id: str, user: Users = Depends(get_current_admin), db
 def decrease_rating(object_id: str, user: Users = Depends(get_current_admin), db: Session = Depends(get_db)):
     existing_rating = db.query(Ratings).filter(Ratings.object_id == object_id).first()
     if not existing_rating:
-        user_not_found_exception
+        raise user_not_found_exception
 
     if existing_rating.rating <= 0:
         raise user_is_min_rank_exception
