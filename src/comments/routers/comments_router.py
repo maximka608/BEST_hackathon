@@ -1,10 +1,9 @@
-from http.client import HTTPException
 from typing import List
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from comments.schemas import CommentResponse, RatingResponse, CommentCreate
+from src.comments.schemas import CommentResponse, RatingResponse, CommentCreate
 from src.database import get_db
 from src.models import Users
 from src.utils.auth_services import get_current_user
