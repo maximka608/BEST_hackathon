@@ -17,92 +17,89 @@ def haversine(a, b):
 
 def calculate_accessibility_weight(tags, accessible=False):
     """
-    Calculate weight modifier based on accessibility features.
+    Calculate weight modifier based on wheelchair accessibility features.
     If accessible=True, paths that aren't wheelchair friendly get much higher weights.
 
     Returns:
-    - weight_factor: the weight multiplier (lower is preferred)
-    - is_accessible: boolean indicating if the way is accessible
+    - weight_factor: the weight multiplier (higher means less preferred)
+    - is_accessible: boolean indicating if the way is accessible by wheelchair
     """
     if not accessible:
-        return 1.0, True
-
+        return 1.0, True  # If accessibility not required, no penalty
+    
+    # Default values
     weight_factor = 1.0
     is_accessible = True
-
+    
+    # Direct wheelchair tag check
     wheelchair = tags.get('wheelchair', '')
     if wheelchair in ['no', 'limited']:
-        weight_factor *= 10.0
+        weight_factor *= 15.0
         is_accessible = False
     elif wheelchair == 'yes':
-        weight_factor *= 0.8
-
+        weight_factor *= 0.8  # Slight preference for explicitly marked accessible ways
+    
+    # Steps are major barriers without ramps
     if tags.get('highway') == 'steps':
-        weight_factor *= 20.0
-        is_accessible = False
-
+        # Check if there's a ramp
+        if tags.get('ramp', '') == 'no':
+            weight_factor *= 25.0  # Heavily penalize steps without ramps
+            is_accessible = False
+        elif tags.get('ramp', '') == 'yes':
+            weight_factor *= 1.5  # Even with ramp, steps are not ideal
+        else:
+            weight_factor *= 20.0  # No ramp information, assume inaccessible
+            is_accessible = False
+    
+    # Surface quality affects wheelchair movement
     surface = tags.get('surface', '')
     if surface in ['cobblestone', 'cobblestone:flattened', 'paving_stones']:
-        weight_factor *= 2.0
-    elif surface in ['gravel', 'dirt', 'sand', 'mud']:
-        weight_factor *= 5.0
+        weight_factor *= 2.5
+    elif surface in ['gravel', 'dirt', 'sand', 'mud', 'unpaved']:
+        weight_factor *= 8.0
         is_accessible = False
-    elif surface in ['asphalt', 'concrete', 'paved']:
-        weight_factor *= 0.9
-
-    smoothness = tags.get('smoothness', '')
-    if smoothness in ['bad', 'very_bad', 'horrible', 'very_horrible', 'impassable']:
-        weight_factor *= 4.0
-        is_accessible = False
-    elif smoothness in ['excellent', 'good']:
-        weight_factor *= 0.9
-
+    
+    # Steep inclines are difficult for wheelchairs
     if 'incline' in tags:
         try:
             incline_str = tags['incline'].rstrip('%')
             incline = abs(float(incline_str))
-            if incline > 6:
-                weight_factor *= (1.0 + incline / 5.0)
-                if incline > 10:
+            if incline > 8:  # ADA standards suggest 8.33% maximum
+                weight_factor *= (1.0 + incline / 4.0)
+                if incline > 12:
                     is_accessible = False
         except ValueError:
             if tags['incline'] in ['steep', 'up', 'down']:
-                weight_factor *= 3.0
-                is_accessible = False
-
+                weight_factor *= 4.0
+                if tags.get('ramp') != 'yes':  # Steeper inclines need proper ramps
+                    is_accessible = False
+    
+    # Width check for wheelchair passage
     if 'width' in tags:
         try:
             width_str = tags['width'].split()[0]
             width = float(width_str)
-            if width < 0.9:
-                weight_factor *= 5.0
+            if width < 0.9:  # Standard wheelchair width + clearance
+                weight_factor *= 10.0
                 is_accessible = False
-            elif width >= 1.5:
-                weight_factor *= 0.9
+            elif width < 1.2:  # Tight but passable
+                weight_factor *= 2.0
         except ValueError:
             pass
-
-    # Check kerb height
+    
+    # Kerb height is critical for wheelchairs
     if 'kerb' in tags:
         try:
             kerb_height = float(tags['kerb'])
-            if kerb_height > 0.03:  # Kerbs > 3cm are difficult
-                weight_factor *= (1.0 + kerb_height * 10)
-                if kerb_height > 0.07:  # Kerbs > 7cm are very difficult
+            if kerb_height > 0.02:  # More than 2cm is problematic
+                weight_factor *= (1.0 + kerb_height * 15)
+                if kerb_height > 0.05:  # More than 5cm is very difficult
                     is_accessible = False
         except ValueError:
             if tags['kerb'] in ['raised', 'high']:
-                weight_factor *= 3.0
+                weight_factor *= 5.0
                 is_accessible = False
-            elif tags['kerb'] in ['lowered', 'flush']:
-                weight_factor *= 0.9
-
-    if tags.get('handrail') == 'yes':
-        weight_factor *= 0.95
-
-    if tags.get('tactile_paving') == 'yes':
-        weight_factor *= 0.95
-
+    
     return weight_factor, is_accessible
 
 

@@ -26,8 +26,7 @@ def create_rating(rating: RatingResponse, user: Users = Depends(get_current_admi
 def get_rating_by_object_id(object_id: str, db: Session = Depends(get_db)):
     rating = db.query(Ratings).filter(Ratings.object_id == object_id).first()
     if not rating:
-        raise user_not_found_exception
-
+        raise {"rating": -1}
 
     return RatingResponse.model_validate(rating, from_attributes=True)
 

@@ -6,7 +6,6 @@ class RatingCreate(BaseModel):
     rating: float
 
 class RatingResponse(BaseModel):
-    object_id: str
     rating: float
 
     model_config = ConfigDict(from_attributes=True)
