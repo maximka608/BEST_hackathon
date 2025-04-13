@@ -39,3 +39,19 @@ def filter_visually_impaired(db: Session, category: str):
 def get_all_objects(db: Session):
     return (db.execute(select(Objects))).scalars().all()
 
+
+def get_all_from_mongols(db: Session):
+    query_nodes_ways = {
+        "type": {"$in": ["node", "way"]},
+        "$or": [
+            {"tags.wheelchair": {"$exists": True}},
+            {"tags.toilets_wheelchair": {"$exists": True}},
+            {"tags.tactile_paving": {"$exists": True}},
+            {"tags.amenity": {"$exists": True}},
+            {"tags.tourism": {"$exists": True}},
+            {"tags.office": {"$exists": True}},
+        ]
+    }
+    nodes = list(db["osm_collection"].find(query_nodes_ways))
+    return nodes
+

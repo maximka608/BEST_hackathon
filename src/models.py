@@ -57,7 +57,7 @@ class Comments(Base):
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     object_id = Column(Integer, ForeignKey("object.id"), nullable=False)
     text = Column(String, nullable=False)
-    rating = Column(Float, nullable=False)
+    rating = Column(Float, nullable=True)
 
     user = relationship("Users", back_populates="comments")
     object = relationship("Objects", back_populates="comments")

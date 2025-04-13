@@ -1,5 +1,5 @@
 import time
-from contextlib import asynccontextmanager
+from contextlib import contextmanager, asynccontextmanager
 
 import uvicorn
 from fastapi import FastAPI, Request
@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.auth.routers.admin_router import admin_router
 from src.auth.routers.auth_router import auth_router
 from src.auth.routers.user_router import user_router
-from src.object.object_router import obj_router
+# from src.object.object_router import obj_router
 from src.config import origins
 from src.database import get_db
 from src.db.mongo import close_mongo_connection, connect_to_mongo
@@ -18,9 +18,9 @@ from src.objects.routers.objects_router import object_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await connect_to_mongo()
+    connect_to_mongo()
     yield
-    await close_mongo_connection()
+    close_mongo_connection()
 
 app = FastAPI(lifespan=lifespan)
 
@@ -54,7 +54,7 @@ app.include_router(object_router, prefix="/api/objects", tags=["Objects"])
 
 app.include_router(admin_objects_router, prefix="/api/admin/objects", tags=["Admin/Objects"])
 
-app.include_router(obj_router, prefix="/api/object")
+# app.include_router(obj_router, prefix="/api/object")
 
 
 if __name__ == '__main__':
