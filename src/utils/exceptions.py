@@ -26,6 +26,10 @@ user_is_min_rank_exception = HTTPException(
     status.HTTP_400_BAD_REQUEST, {"message": "User is already at min rank"}
 )
 
+comments_must_provide_text_or_rating_exception = HTTPException(
+    status_code=400, detail="Comment text or rating is required"
+)
+
 invalid_token_exception = HTTPException(
     status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token"
 )
