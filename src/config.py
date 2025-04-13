@@ -10,6 +10,7 @@ db_path = os.path.join(base_dir, "object.db")
 DATABASE_URL: str = os.getenv("SQLLITE_URL", "sqllite_url")
 origins = [
     "http://localhost:3000",
+    "https://accessible-places-finder-frontend.onrender.com/"
 ]
 
 
