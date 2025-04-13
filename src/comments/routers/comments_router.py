@@ -13,7 +13,7 @@ from src.utils.services import create_comment
 
 comments_router = APIRouter()
 
-@comments_router.post("/comments", response_model=CommentResponse)
+@comments_router.post("/comments")
 def add_comment(comment: CommentCreate, user: Users = Depends(get_current_user), sqlite_db: Session = Depends(get_db)):
 
     if not comment.text and not comment.rating:
