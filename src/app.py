@@ -14,6 +14,7 @@ from src.database import get_db
 from src.db.mongo import close_mongo_connection, connect_to_mongo
 from src.objects.routers.admin_objects_router import admin_objects_router
 from src.objects.routers.objects_router import object_router
+from src.ratings.routers.ratings_router import ratings_router
 
 
 @asynccontextmanager
@@ -53,6 +54,7 @@ app.include_router(object_router, prefix="/api/objects", tags=["Objects"])
 
 app.include_router(admin_objects_router, prefix="/api/admin/objects", tags=["Admin/Objects"])
 app.include_router(comments_router, prefix="/api/comments", tags=["Comments"])
+app.include_router(ratings_router, prefix="/api/ratings", tags=["Ratings"])
 
 
 if __name__ == '__main__':

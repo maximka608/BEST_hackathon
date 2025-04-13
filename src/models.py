@@ -60,3 +60,11 @@ class Comments(Base):
     rating = Column(Float, nullable=True)
 
     user = relationship("Users", back_populates="comments")
+
+
+class Ratings(Base):
+    __tablename__ = "ratings"
+
+    id = Column(Integer, primary_key=True, index=True)
+    object_id = Column(String, nullable=False, unique=True)
+    rating = Column(Float, nullable=False, default=1.0)
