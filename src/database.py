@@ -1,12 +1,13 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base, Session
+from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.ext.declarative import declarative_base
+
 from src.config import DATABASE_URL
 
-engine = create_engine(
-    DATABASE_URL, connect_args={"check_same_thread": False}
-)
+engine = create_engine(DATABASE_URL)
 
-SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
+SessionLocal = sessionmaker(bind=engine)
+
 Base = declarative_base()
 
 def get_db():
