@@ -8,19 +8,20 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.auth.routers.admin_router import admin_router
 from src.auth.routers.auth_router import auth_router
 from src.auth.routers.user_router import user_router
-from src.object.object_router import obj_router
+from src.comments.routers.comments_router import comments_router
 from src.config import origins
 from src.database import get_db
 from src.db.mongo import close_mongo_connection, connect_to_mongo
 from src.objects.routers.admin_objects_router import admin_objects_router
 from src.objects.routers.objects_router import object_router
+from src.ratings.routers.ratings_router import ratings_router
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await connect_to_mongo()
+    connect_to_mongo()
     yield
-    await close_mongo_connection()
+    close_mongo_connection()
 
 app = FastAPI(lifespan=lifespan)
 
@@ -47,14 +48,13 @@ async def health_check():
 
 
 app.include_router(auth_router, prefix="/api/auth", tags=["Auth"])
-
 app.include_router(user_router, prefix="/api/user", tags=["User"])
 app.include_router(admin_router, prefix="/api/admin", tags=["Admin"])
 app.include_router(object_router, prefix="/api/objects", tags=["Objects"])
 
 app.include_router(admin_objects_router, prefix="/api/admin/objects", tags=["Admin/Objects"])
-
-app.include_router(obj_router, prefix="/api/object")
+app.include_router(comments_router, prefix="/api/comments", tags=["Comments"])
+app.include_router(ratings_router, prefix="/api/ratings", tags=["Ratings"])
 
 
 if __name__ == '__main__':

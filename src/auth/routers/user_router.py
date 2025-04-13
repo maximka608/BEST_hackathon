@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from src.auth.schemas import UserProfileResponse
+from src.auth.schemas import UserProfileResponse, UserResponse
 from src.database import get_db
 from src.models import Users
 from src.utils.auth_services import get_current_user
@@ -9,10 +9,10 @@ from src.utils.auth_services import get_current_user
 user_router = APIRouter()
 
 
-@user_router.get("/", response_model=UserProfileResponse)
+@user_router.get("/", response_model=UserResponse)
 def profile(user: Users = Depends(get_current_user)):
     """User can view his profile information"""
-    return UserProfileResponse.model_validate(user, from_attributes=True)
+    return UserResponse.model_validate(user, from_attributes=True)
 
 
 @user_router.delete("/")

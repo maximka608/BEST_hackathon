@@ -22,7 +22,6 @@ class ObjectResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
-
 class ObjectUpdate(BaseModel):
     ramp: Optional[bool] = None
     lowered_curb: Optional[bool] = None
@@ -34,3 +33,13 @@ class ObjectUpdate(BaseModel):
     elevator: Optional[bool] = None
     hoist: Optional[bool] = None
     accessible_parking: Optional[bool] = None
+
+
+class Coordinate(BaseModel):
+    lat: float
+    lon: float
+
+class PathRequest(BaseModel):
+    start: Coordinate
+    end: Coordinate
+    accessible: bool

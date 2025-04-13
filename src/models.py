@@ -47,7 +47,7 @@ class Objects(Base):
     hoist = Column(Boolean, nullable=False, default=False)
     accessible_parking = Column(Boolean, nullable=False, default=False)
 
-    comments = relationship("Comments", back_populates="object", cascade="all, delete-orphan")
+    # comments = relationship("Comments", back_populates="object", cascade="all, delete-orphan")
 
 
 class Comments(Base):
@@ -55,9 +55,16 @@ class Comments(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    object_id = Column(Integer, ForeignKey("object.id"), nullable=False)
-    text = Column(String, nullable=False)
-    rating = Column(Float, nullable=False)
+    object_id = Column(String, nullable=False)
+    text = Column(String, nullable=True)
+    rating = Column(Float, nullable=True)
 
     user = relationship("Users", back_populates="comments")
-    object = relationship("Objects", back_populates="comments")
+
+
+class Ratings(Base):
+    __tablename__ = "ratings"
+
+    id = Column(Integer, primary_key=True, index=True)
+    object_id = Column(String, nullable=False, unique=True)
+    rating = Column(Float, nullable=False, default=1.0)

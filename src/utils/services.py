@@ -2,9 +2,10 @@ from datetime import datetime, timezone
 
 from sqlalchemy.orm import Session
 
+from src.comments.schemas import CommentCreate
 from src.auth.hashing import hash_password
 from src.auth.schemas import UserCreate
-from src.models import Users, UserStatus
+from src.models import Users, UserStatus, Comments
 from src.utils.getters_services import get_user_by_id
 
 
@@ -23,6 +24,24 @@ def create_user(db: Session, user: UserCreate):
     db.commit()
     db.refresh(new_user)
     return new_user
+
+
+def create_comment(user: Users, comment: CommentCreate, db: Session):
+    """Create a new comment"""
+    new_comment = Comments(
+        object_id=comment.object_id,
+        user_id=user.id,
+        text=comment.text,
+        rating=comment.rating,
+    )
+
+    db.add(new_comment)
+    db.flush()
+    db.commit()
+    db.refresh(new_comment)
+    return new_comment
+
+
 
 def update_user_tokens(db: Session, user_id: int, new_access_token: str, new_refresh_token: str):
     """Update the tokens of an existing user, after login"""
