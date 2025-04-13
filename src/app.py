@@ -1,11 +1,11 @@
 import time
-from contextlib import contextmanager, asynccontextmanager
+from contextlib import asynccontextmanager
 
 import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
-from comments.routers.comments_router import comments_router
+from src.comments.routers.comments_router import comments_router
 from src.auth.routers.admin_router import admin_router
 from src.auth.routers.auth_router import auth_router
 from src.auth.routers.user_router import user_router

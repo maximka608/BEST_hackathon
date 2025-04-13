@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 
 from sqlalchemy.orm import Session
 
-from comments.schemas import CommentCreate
+from src.comments.schemas import CommentCreate
 from src.auth.hashing import hash_password
 from src.auth.schemas import UserCreate
 from src.models import Users, UserStatus, Comments
