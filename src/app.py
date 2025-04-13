@@ -5,6 +5,7 @@ import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
+from comments.routers.comments_router import comments_router
 from src.auth.routers.admin_router import admin_router
 from src.auth.routers.auth_router import auth_router
 from src.auth.routers.user_router import user_router
@@ -53,7 +54,7 @@ app.include_router(admin_router, prefix="/api/admin", tags=["Admin"])
 app.include_router(object_router, prefix="/api/objects", tags=["Objects"])
 
 app.include_router(admin_objects_router, prefix="/api/admin/objects", tags=["Admin/Objects"])
-
+app.include_router(comments_router, prefix="/api/comments", tags=["Comments"])
 # app.include_router(obj_router, prefix="/api/object")
 
 

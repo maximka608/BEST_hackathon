@@ -2,8 +2,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from sqlalchemy import or_
-from src.models import Users, Objects
-
+from src.models import Users, Objects, Comments
 
 
 def get_user_by_id(db: Session, user_id: int):
@@ -54,4 +53,14 @@ def get_all_from_mongols(db: Session):
     }
     nodes = list(db["osm_collection"].find(query_nodes_ways))
     return nodes
+
+
+def get_comments_by_object_id(object_id: str, db: Session):
+    return (db.execute(select(Comments).where(Comments.object_id == object_id, Comments.text != None))).scalars().all()
+
+
+
+def get_ratings_by_object_id(object_id: str, db: Session):
+    return (db.execute(select(Comments).where(Comments.object_id == object_id, Comments.rating != None))).scalars().all()
+
 
