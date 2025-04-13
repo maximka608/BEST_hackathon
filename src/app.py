@@ -54,7 +54,6 @@ app.include_router(object_router, prefix="/api/objects", tags=["Objects"])
 
 app.include_router(admin_objects_router, prefix="/api/admin/objects", tags=["Admin/Objects"])
 
-# app.include_router(obj_router, prefix="/api/object")
 
 
 if __name__ == '__main__':

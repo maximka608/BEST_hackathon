@@ -1,6 +1,6 @@
 from typing import Optional
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class ObjectResponse(BaseModel):
@@ -34,3 +34,13 @@ class ObjectUpdate(BaseModel):
     elevator: Optional[bool] = None
     hoist: Optional[bool] = None
     accessible_parking: Optional[bool] = None
+
+
+class Coordinate(BaseModel):
+    lat: float
+    lon: float
+
+class PathRequest(BaseModel):
+    start: Coordinate
+    end: Coordinate
+    accessible: bool

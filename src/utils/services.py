@@ -8,6 +8,7 @@ from src.models import Users, UserStatus
 from src.utils.getters_services import get_user_by_id
 
 
+
 def create_user(db: Session, user: UserCreate):
     """New user creation"""
     hashed_password = hash_password(user.password)
