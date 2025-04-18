@@ -61,7 +61,7 @@ alembic upgrade head
 ### 🛠 Tech Stack
 FastAPI — for creating REST APIs.
 
-PostgreSQL + SQLAlchemy — for storing objects and comments.
+SQLLite + SQLAlchemy — for storing objects and comments.
 
 MongoDB — for OpenStreetMap geodata.
 
